@@ -46,7 +46,7 @@ auto& victoryLabel(manager.addEntity());
 
 Game::Game() {
 
-	srand(time(0));
+	srand((unsigned int) time(0));
 
 	timer = Timer::Instance();
 	startScreen = StartScreen::Instance();
@@ -102,6 +102,7 @@ void Game::init(const char* title, int x, int y, int width, int height, bool ful
 	assets->AddTexture("rocket", "assets/rocket-animation.png");
 	assets->AddTexture("rocket-bullet", "assets/rock-bullet-anim.png");
 	assets->AddTexture("building", "assets/house-anim.png");
+	assets->AddTexture("fuel", "assets/fuel.png");
 	assets->AddTexture("base-building", "assets/base-anim.png");
 	assets->AddFont("arcade", "assets/arcade.ttf", 16);
 
@@ -219,6 +220,14 @@ int Game::getPlayerScore() {
 void Game::setPlayerScore(int score) {
 	Player* player = playerController->getPlayer();
 	player->setCurrentScore(player->getCurrentScore() + score);
+}
+
+void Game::setPlayerFuel(float fuel) {
+	return playerController->getPlayer()->increaseFuel(fuel);
+}
+
+float Game::getPlayerFuel() {
+	return playerController->getPlayer()->getFuel();
 }
 
 int Game::getPlayerHighScore() {

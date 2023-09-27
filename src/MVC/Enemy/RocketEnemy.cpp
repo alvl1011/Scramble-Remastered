@@ -5,11 +5,11 @@ extern Manager manager;
 void RocketEnemy::initEnemy(float x, float y) {
 	auto& enemy(manager.addEntity());
 
-	enemy.addComponent<TransformComponent>(x, y, 16, 16, 3);
-	enemy.addComponent<AnimatedView>("rocket", 0, 4, 1);
+	enemy.addComponent<TransformComponent>((float) x, (float) y, 16, 16, 3);
+	enemy.addComponent<AnimatedView>("rocket", 0, 4, 1.0f);
 
 	enemy.addComponent<ColliderComponent>("enemy");
-	enemy.addComponent<TriggerComponent>(x - 100, 100, 400, 500);
+	enemy.addComponent<TriggerComponent>((int) (x - 100), 100, 400, 500);
 	setEnemy(&enemy);
 	enemy.addGroup(Game::groupColliders);
 	isDead = false;

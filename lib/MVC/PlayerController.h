@@ -21,7 +21,6 @@ class PlayerController : Controller {
 private:
 
 	Player* player;
-	PlayerView* view;
 
 	static const int MAX_BULLETS = 5;
 	Bullet* mBullets[MAX_BULLETS];

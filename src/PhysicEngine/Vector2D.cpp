@@ -62,8 +62,8 @@ Vector2D& operator*(Vector2D& v1, const Vector2D& v2) {
 
 Vector2D& operator*(float& v1, const Vector2D& v2) {
 
-	Vector2D output = Vector2D(v1 * v2.x, v1 * v2.y);
-	return output;
+	Vector2D* output = new Vector2D(v1 * v2.x, v1 * v2.y);
+	return *output;
 }
 
 Vector2D& operator/(Vector2D& v1, const Vector2D& v2) {

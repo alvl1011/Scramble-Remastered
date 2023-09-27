@@ -13,7 +13,7 @@ void Player::init() {
 	player.addComponent<TransformComponent>(400.0f, 320.0f, 32, 32, 2);
 	player.addComponent<KeyboardController>();
 	
-	player.addComponent<AnimatedView>("player", 0, 4, 1);
+	view = new PlayerView(&player.addComponent<AnimatedView>("player", 0, 4, 1.0f));
 	player.addComponent<ColliderComponent>("player");
 	player.addGroup(Game::groupPlayers);
 
@@ -39,6 +39,7 @@ void Player::update() {
 
 	updateCollision();
 	updateCurrentScore();
+	updateFuel();
 }
 
 void Player::updateCurrentScore() {
@@ -49,6 +50,13 @@ void Player::updateCurrentScore() {
 
 	if (Game::track % 128 == 0 && Game::track != 0) {
 		setCurrentScore(currentScore + 10);
+	}
+}
+
+void Player::updateFuel() {
+
+	if (Game::track % 128 == 0 && Game::track != 0) {
+		decreaseFuel(0.005f * MAX_FUEL);
 	}
 }
 
@@ -91,4 +99,8 @@ Entity* Player::getPlayer() {
 
 Player::~Player() {
 	manager.getGroup(Game::groupPlayers)[0]->destroy();
+}
+
+PlayerView* Player::getView() {
+	return view;
 }

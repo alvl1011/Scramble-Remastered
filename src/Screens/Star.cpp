@@ -7,7 +7,7 @@ bool Star::sScroll = false;
 Star::Star(int scale) {
 
 	auto& starPtr(manager.addEntity());
-	starPtr.addComponent<TransformComponent>(rand() % 800, rand() % 670, 2, 2, scale);
+	starPtr.addComponent<TransformComponent>((float) (rand() % 800), (float) (rand() % 670), 2, 2, scale);
 	starPtr.addComponent<SpriteComponent>("assets/stars.png");
 	starPtr.addGroup(Game::groupStars);
 
@@ -54,11 +54,11 @@ void Star::Scroll(bool b) {
 void Star::ScrollStar() {
 
 	TransformComponent* transform = &star->getComponent<TransformComponent>();
-	transform->speed = mScrollSpeed;
+	transform->speed = (int) mScrollSpeed;
 	transform->velocity.x = 2;
 
 	if (transform->position.x > 800) {
 		transform->position.x = 0.0f;
-		transform->position.y = rand() % 670;
+		transform->position.y = (float) (rand() % 670);
 	}
 }

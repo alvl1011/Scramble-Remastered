@@ -52,13 +52,13 @@ void Map::LoadMap(std::string path, int sizeX, int sizeY) {
 		for (int x = 0; x < sizeX; x++) {
 			mapFile.get(c);
 			if (c == '1') {
-				Game::enemyCoordinates.emplace_back(Vector2D(x * scaledSize, y * scaledSize));
+				Game::enemyCoordinates.emplace_back(Vector2D((float) (x * scaledSize), (float)(y * scaledSize)));
 			}
 			else if (c == '2') {
-				Game::buildingCoordinates.emplace_back(Vector2D(x * scaledSize, y * scaledSize));
+				Game::buildingCoordinates.emplace_back(Vector2D((float) (x * scaledSize), (float)(y * scaledSize)));
 			}
 			else if (c == '3') {
-				Game::baseCoordinate = Vector2D(x * scaledSize, y * scaledSize);
+				Game::baseCoordinate = Vector2D((float)(x * scaledSize), (float)(y * scaledSize));
 			}
 			mapFile.ignore();
 		}

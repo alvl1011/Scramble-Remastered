@@ -17,7 +17,10 @@ class Player {
 
 private:
 
+	const float MAX_FUEL = 200.0f;
+
 	Entity* entity;
+	PlayerView* view;
 
 	std::string name;
 	bool is_dead = false;
@@ -30,7 +33,7 @@ private:
 public:
 
 	int lives = 3;
-	float fuel = 0.0f;
+	float fuel = MAX_FUEL;
 
 	/**
 	 * @brief Constructor for the Player class.
@@ -61,6 +64,11 @@ public:
 	void updateCurrentScore();
 
 	/**
+	 * @brief Updates the player's fuel.
+	 */
+	void updateFuel();
+
+	/**
 	 * @brief Updates collision-related behaviors for the player.
 	 */
 	void updateCollision();
@@ -70,6 +78,12 @@ public:
 	 * @return A pointer to the player's entity.
 	 */
 	Entity* getPlayer();
+
+	/**
+	 * @brief Gets the view representing the player view.
+	 * @return A pointer to the player's view.
+	 */
+	PlayerView* getView();
 
 	/**
 	 * @brief Gets the name of the player.
@@ -125,5 +139,38 @@ public:
 	*/
 	int getHighScore() {
 		return highScore;
+	}
+
+	/**
+	* @brief Gets the fuel by the player.
+	* @return The fuel.
+	*/
+	float getFuel() {
+		return (fuel / MAX_FUEL);
+	}
+
+	/**
+	 * @brief Decreases the fuel of the player.
+	 * @param score The new fuel.
+	 */
+	void decreaseFuel(float fuel) {
+		float newFuel = this->fuel - fuel;
+		if (newFuel >= 0) {
+			this->fuel = newFuel;
+		}
+	}
+
+	/**
+	 * @brief Increases the fuel of the player.
+	 * @param score The new fuel.
+	 */
+	void increaseFuel(float fuel) {
+		float newFuel = this->fuel + fuel;
+		if (newFuel <= MAX_FUEL) {
+			this->fuel = newFuel;
+		}
+		else {
+			this->fuel = MAX_FUEL;
+		}
 	}
 };

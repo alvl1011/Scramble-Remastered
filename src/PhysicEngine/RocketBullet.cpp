@@ -11,7 +11,7 @@ RocketBullet::RocketBullet() {
 	auto& rocketEntity(manager.addEntity());
 	rocketEntity.addComponent<TransformComponent>(0.0f, 0.0f, 16, 16, 2, 2);
 	rocketEntity.addComponent<ColliderComponent>("rock-bullet");
-	rocketEntity.addComponent<AnimatedView>("rocket-bullet", 0, 4, 1);
+	rocketEntity.addComponent<AnimatedView>("rocket-bullet", 0, 4, 1.0f);
 
 	rocketEntity.addGroup(Game::groupColliders);
 	rocket = &rocketEntity;

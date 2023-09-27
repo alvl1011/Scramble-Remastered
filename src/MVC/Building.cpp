@@ -2,18 +2,18 @@
 
 extern Manager manager;
 
-Building::Building(float x, float y, int scores, bool is_base) : scores(scores), is_base(is_base) {
+Building::Building(float x, float y, int scores, bool is_base, bool is_fuel) : scores(scores), is_base(is_base), is_fuel(is_fuel) {
 
 	auto& building(manager.addEntity());
 	if (is_base) {
-		building.addComponent<TransformComponent>(x, y, 16, 16, 4);
+		building.addComponent<TransformComponent>((float) x, (float) y, 16, 16, 4);
 	}
 	else {
-		building.addComponent<TransformComponent>(x, y, 16, 16, 3);
+		building.addComponent<TransformComponent>((float) x, (float) y, 16, 16, 3);
 	}
 	
-	std::string asset = is_base ? "base-building" : "building";
-	building.addComponent<AnimatedView>(asset, 0, 4, 1);
+	std::string asset = is_base ? "base-building" : (is_fuel ? "fuel" : "building");
+	building.addComponent<AnimatedView>(asset, 0, 4, 1.0f);
 	building.addComponent<ColliderComponent>(asset);
 
 	entity = &building;
@@ -71,6 +71,11 @@ void Building::updateCollider() {
 			if (collider->tag == "base-building") {
 				Game::audioManager->PlayMusic("win.wav", 0);
 				Game::victory = true;
+			}
+
+			if (collider->tag == "fuel") {
+				Game::setPlayerFuel(10.0f);
+				Game::audioManager->PlaySFX("fuel.wav");
 			}
 				
 			break;

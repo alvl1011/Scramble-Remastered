@@ -71,6 +71,11 @@ public:
 	 */
 	void RenderStars();
 
+	/**
+	 * @brief Render the horizontal bar.
+	 */
+	void RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor);
+
 private:
 
 	/**

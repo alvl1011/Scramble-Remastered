@@ -6,6 +6,7 @@ Player* PlayerController::initPlayer(std::string name, int lives, int highScore)
 	std::cout << "Player initialized: " << player->getName() << std::endl;
 	std::cout << "Player highscore param: " << highScore << std::endl;
 	std::cout << "Player highscore: " << player->getHighScore() << std::endl;
+	std::cout << "Player fuel: " << player->getFuel() << std::endl;
 
 	for (int i = 0; i < MAX_BULLETS; i++) {
 		mBullets[i] = new Bullet();
@@ -19,7 +20,8 @@ Player* PlayerController::initPlayer(std::string name, int lives, int highScore)
 }
 
 void PlayerController::drawPlayer() {
-	player->getPlayer()->draw();
+	PlayerView* view = player->getView();
+	view->getView()->draw();
 }
 
 void PlayerController::HandleFiring() {

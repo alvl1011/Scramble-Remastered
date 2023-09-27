@@ -114,6 +114,18 @@ public:
 	static int getPlayerHighScore();
 
 	/**
+	 * @brief Get the player's fuel
+	 *
+	 * @return The player's fuel.
+	 */
+	static float getPlayerFuel();
+
+	/**
+	 * @brief Set the player's fuel
+	 */
+	static void setPlayerFuel(float fuel);
+
+	/**
 	 * @brief Get the player's remaining lives.
 	 *
 	 * @return The number of lives the player has remaining.

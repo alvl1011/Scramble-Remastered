@@ -60,6 +60,8 @@ void StartScreen::Init() {
 	auto& subTitleLabel1(manager.addEntity());
 	auto& subTitleLabel2(manager.addEntity());
 
+	auto& fuelLabel(manager.addEntity());
+
 	levelLabel.addComponent<UILabel>(10, 10, "1UP", "arcade", white);
 	highScore.addComponent<UILabel>(300, 10, "High score", "arcade", white);
 	highScoreValue.addComponent<UILabel>(330, 30, "10000", "arcade", yellow);
@@ -88,6 +90,8 @@ void StartScreen::Init() {
 	subTitleLabel1.addComponent<UILabel>(250, 350, "How far can you invade", "arcade", red);
 	subTitleLabel2.addComponent<UILabel>(265, 400, "our scramble system?", "arcade", red);
 
+	fuelLabel.addComponent<UILabel>(250, 600, "fuel", "arcade", white);
+
 	live1.addComponent<TransformComponent>(0.0f, 610.0f, 32, 32, 2);
 	live1.addComponent<SpriteComponent>("assets/ship.png");
 
@@ -109,6 +113,8 @@ void StartScreen::Init() {
 	gameWidgets.emplace_back(&activeLvl2);
 	gameWidgets.emplace_back(&baseLevel);
 	gameWidgets.emplace_back(&activeLvl6);
+
+	gameWidgets.emplace_back(&fuelLabel);
 
 
 	gameWidgets.emplace_back(&live1);
@@ -200,9 +206,27 @@ void StartScreen::Render() {
 		for (auto& widget : gameWidgets) {
 			widget->draw();
 		}
+
+		RenderHPBar(550, 620, -300, 20, Game::getPlayerFuel(), { 255, 255,0 }, { 0, 0, 200 });
+		SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 255);
 	}
 
 	for (auto& widget : widgets) {
 		widget->draw();
 	}
+}
+
+void StartScreen::RenderHPBar(int x, int y, int w, int h, float percent, SDL_Color FGColor, SDL_Color BGColor) {
+	percent = percent > 1.f ? 1.f : percent < 0.f ? 0.f : percent;
+	SDL_Color old;
+	SDL_GetRenderDrawColor(Game::renderer, &old.r, &old.g, &old.g, &old.a);
+	SDL_Rect bgrect = { x, y, w, h };
+	SDL_SetRenderDrawColor(Game::renderer, BGColor.r, BGColor.g, BGColor.b, BGColor.a);
+	SDL_RenderFillRect(Game::renderer, &bgrect);
+	SDL_SetRenderDrawColor(Game::renderer, FGColor.r, FGColor.g, FGColor.b, FGColor.a);
+	int pw = (int)((float)w * percent);
+	int px = x + (w - pw);
+	SDL_Rect fgrect = { px, y, pw, h };
+	SDL_RenderFillRect(Game::renderer, &fgrect);
+	SDL_SetRenderDrawColor(Game::renderer, old.r, old.g, old.b, old.a);
 }

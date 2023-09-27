@@ -18,6 +18,7 @@ private:
 	int scores;
 
 	bool is_base = false;
+	bool is_fuel = false;
 	bool destroyed;
 
 	Entity* entity;
@@ -44,8 +45,9 @@ public:
 	* @param y The Y-coordinate of the building's position.
 	* @param scores The score value associated with the building.
 	* @param is_base Indicates whether the building is a base (default is false).
+	* @param is_fuel Indicates whether the building is a fuel building (default is false).
 	*/
-	Building(float x, float y, int scores, bool is_base);
+	Building(float x, float y, int scores, bool is_base, bool is_fuel);
 
 	/**
 	 * @brief Destructor for the Building class.
