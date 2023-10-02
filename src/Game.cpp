@@ -318,3 +318,11 @@ void Game::clean() {
 	SDL_Quit();
 	std::cout << "Game cleaned." << std::endl;
 }
+
+std::vector<Entity*>& Game::getGroupFromManager(Group groupname) {
+	if (!validateGroup(groupname)) {
+		std::vector<Entity*> emptyVector;
+		return emptyVector;
+	}
+	return manager.getGroup(groupname);
+}

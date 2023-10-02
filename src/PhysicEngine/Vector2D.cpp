@@ -108,9 +108,9 @@ Vector2D& Vector2D::Zero() {
 
 Vector2D Vector2D::RotateVector(Vector2D& vec, float angle) {
 
-	float radAngle = (float)(angle * DEG_TO_RAD);
-
-	return Vector2D((float) (vec.x * cos(radAngle) - vec.y * sin(radAngle)), (float)(vec.x * sin(radAngle) + vec.y * cos(radAngle)));
+	float radAngle = angle * DEG_TO_RAD;
+	return Vector2D(vec.x * cos(radAngle) - vec.y * sin(radAngle),
+		vec.x * sin(radAngle) + vec.y * cos(radAngle));
 }
 
 std::ostream& operator<<(std::ostream& stream, const Vector2D& vector) {

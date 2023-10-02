@@ -9,7 +9,6 @@
  * The `Map` class is responsible for managing the game map, including loading and rendering tiles.
  */
 class Map {
-
 public:
 
     /**

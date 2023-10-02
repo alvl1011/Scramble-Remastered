@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GtaTestDurations xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Executable>C:\Users\vovaa\source\repos\Scramble-Remastered\x64\Debug\Scramble-Remastered-Test.exe</Executable>
+  <TestDurations>
+    <TestDuration Test="BuildingFixture.BuildingTestInit" Duration="1" />
+    <TestDuration Test="BuildingFixture.BuildingBaseTestInit" Duration="1" />
+    <TestDuration Test="BuildingFixture.BuildingFuelTest" Duration="1" />
+    <TestDuration Test="EnemyFixture.EnemyTestInit" Duration="1" />
+    <TestDuration Test="PlayerFixture.PlayerTestInit" Duration="1" />
+    <TestDuration Test="PlayerFixture.PlayerUpdateCurrentScoreZero" Duration="1" />
+    <TestDuration Test="PlayerFixture.PlayerUpdateCurrentScoreWithTrackMovement" Duration="1" />
+    <TestDuration Test="PlayerFixture.PlayerUpdateFuelWithTrackMovement" Duration="1" />
+    <TestDuration Test="MapFixture.MapTestInit" Duration="1" />
+    <TestDuration Test="MapFixture.MapLoadMapTest" Duration="9" />
+    <TestDuration Test="GameModelFixture.GameTestInitConstructor" Duration="688" />
+    <TestDuration Test="GameModelFixture.GameCleanTest" Duration="35" />
+    <TestDuration Test="Vector2DFixture.InitZeroVector" Duration="1" />
+    <TestDuration Test="Vector2DFixture.InitXYVector" Duration="1" />
+    <TestDuration Test="Vector2DFixture.InitXYIntegerCastVector" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorAddTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorSubtractTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorMultiplyTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorDivideTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorAddOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorSubtractOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorMultiplyOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorDivideOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorAddEqualsOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorSubtractEqualsOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorMultiplyEqualsOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorDivideEqualsOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorMultiplyIntOperatorTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorRotateTest" Duration="1" />
+    <TestDuration Test="Vector2DFixture.VectorPrintTest" Duration="2" />
+    <TestDuration Test="BezierPathFixture.SampleBezierCurve" Duration="1" />
+  </TestDurations>
+</GtaTestDurations>

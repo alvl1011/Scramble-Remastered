@@ -10,6 +10,7 @@
 
 class AssetManager;
 class ColliderComponent;
+class Entity;
 
 /**
  * @class Game
@@ -132,6 +133,34 @@ public:
 	 */
 	static int getPlayerLives();
 
+	/**
+	 * @brief Get the entities' group from extern manager according to game group type.
+	 *
+	 * @return vector of entities.
+	 */
+	std::vector<Entity*>& getGroupFromManager(size_t groupname);
+
+	/**
+	 * @brief Validate game groups of entities.
+	 *
+	 * @return True if exists.
+	 */
+	bool validateGroup(size_t groupname) {
+		switch (groupname)
+		{
+		case groups::groupMap:
+		case groups::groupColliders:
+		case groups::groupPlayers:
+		case groups::groupEnemies:
+		case groups::groupViews:
+		case groups::groupLabels:
+		case groups::groupStars:
+			return true;
+		default:
+			return false;
+		}
+	}
+
 	static int track;
 
 	static std::vector<Vector2D> enemyCoordinates;
@@ -151,7 +180,7 @@ public:
 	/**
 	 * @brief Enumerations for grouping game entities.
 	 */
-	enum groupLabels : std::size_t
+	enum groups : std::size_t
 	{
 		groupMap,
 		groupPlayers,
